@@ -19,11 +19,10 @@
     <script type="text/babel">
         // --- API KEY & MOCK DATA ---
         /*
-         * ❗️❗️❗️ IMPORTANT ❗️❗️❗️
-         * To make the Weather Widget work, you need to get a FREE API key from OpenWeatherMap.
-         * 1. Go to https://openweathermap.org/appid
-         * 2. Sign up and get your key.
-         * 3. Replace the placeholder 'YOUR_API_KEY_HERE' below with your actual key.
+         * ❗❗❗ IMPORTANT ❗❗❗
+         * The Weather Widget uses a key for WeatherAPI.com.
+         * You can get a FREE key from https://www.weatherapi.com/
+         * Then, replace the placeholder key below with your actual key.
          */
         const API_KEY = 'a7203ef8bd8e46a9bf5145019250609'; 
 
@@ -36,20 +35,23 @@
                     'https://images.unsplash.com/photo-1593693397640-05247e33734a?q=80&w=2070&auto=format&fit=crop',
                     'https://images.unsplash.com/photo-1588623692369-993b2539a291?q=80&w=2070&auto=format&fit=crop',
                     'https://images.unsplash.com/photo-1616191122373-6c61f385c5a7?q=80&w=1974&auto=format&fit=crop',
-                    'https://images.unsplash.com/photo-1579751626652-59842a2353a2?q=80&w=1974&auto=format&fit=crop'
+                    'https://images.unsplash.com/photo-1579751626652-59842a2353a2?q=80&w=1974&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1614552554235-97a24330c5e3?q=80&w=2070&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1549363520-49348e65a6e3?q=80&w=1964&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1598135753163-6167c1a1ad25?q=80&w=2070&auto=format&fit=crop'
                 ],
                 mostVisited: { name: 'Alleppey (Alappuzha) Backwaters', icon: '🛶', details: 'Experience the heart of Kerala by cruising its enchanting backwaters on a traditional houseboat. It\'s an unforgettable journey through a network of lakes, canals, and lagoons.' },
                 attractions: [
                     { name: 'Munnar Tea Gardens', icon: '🍃', details: 'Wander through emerald-green tea estates covering rolling hills.', coords: [10.0892, 77.0595], reviews: [{name: 'Rohan', rating: 5, comment: 'Breathtakingly beautiful!'}, {name: 'Priya', rating: 4, comment: 'A must-visit for nature lovers.'}] },
-                    { name: 'Fort Kochi', icon: '🕸️', details: 'Historic area with iconic Chinese fishing nets and colonial architecture.', coords: [9.9656, 76.2425], reviews: [{name: 'Alisha', rating: 5, comment: 'Loved the vibe and the history.'}] },
+                    { name: 'Fort Kochi', icon: '🕸', details: 'Historic area with iconic Chinese fishing nets and colonial architecture.', coords: [9.9656, 76.2425], reviews: [{name: 'Alisha', rating: 5, comment: 'Loved the vibe and the history.'}] },
                     { name: 'Periyar National Park, Thekkady', icon: '🐘', details: 'A wildlife sanctuary famous for elephants, tigers, and spice plantations.', coords: [9.4678, 77.1444], reviews: [{name: 'David', rating: 4, comment: 'Saw elephants by the lake!'}, {name: 'Sunita', rating: 4, comment: 'The boat ride was amazing.'}] },
-                    { name: 'Varkala Beach', icon: '🏖️', details: 'A stunning cliffside beach offering panoramic views of the Arabian Sea.', coords: [8.7383, 76.7161], reviews: [{name: 'Chloe', rating: 5, comment: 'The cliff view is unreal.'}] },
-                    { name: 'Edakkal Caves, Wayanad', icon: '🏞️', details: 'Prehistoric caves with ancient petroglyphs, offering a trek back in time.', coords: [11.6214, 76.2361], reviews: [{name: 'Arjun', rating: 4, comment: 'The trek up is worth it for the history.'}] },
-                    { name: 'Chembra Peak, Wayanad', icon: '⛰️', details: 'Trek to the stunning heart-shaped lake near the top of Wayanad\'s highest peak.', coords: [11.5222, 76.0833], reviews: [{name: 'Vikram', rating: 5, comment: 'A challenging but rewarding trek.'}] }
+                    { name: 'Varkala Beach', icon: '🏖', details: 'A stunning cliffside beach offering panoramic views of the Arabian Sea.', coords: [8.7383, 76.7161], reviews: [{name: 'Chloe', rating: 5, comment: 'The cliff view is unreal.'}] },
+                    { name: 'Edakkal Caves, Wayanad', icon: '🏞', details: 'Prehistoric caves with ancient petroglyphs, offering a trek back in time.', coords: [11.6214, 76.2361], reviews: [{name: 'Arjun', rating: 4, comment: 'The trek up is worth it for the history.'}] },
+                    { name: 'Chembra Peak, Wayanad', icon: '⛰', details: 'Trek to the stunning heart-shaped lake near the top of Wayanad\'s highest peak.', coords: [11.5222, 76.0833], reviews: [{name: 'Vikram', rating: 5, comment: 'A challenging but rewarding trek.'}] }
                 ],
                 restaurants: [
-                    { name: 'Paragon, Kozhikode', type: '🌶️ Malabar Cuisine', details: 'A legendary restaurant famous for its authentic Malabar Biryani.', coords: [11.2588, 75.7804], reviews: [{name: 'Zain', rating: 5, comment: 'Best biryani I have ever had, period.'}, {name: 'Maria', rating: 5, comment: 'An absolute must-visit.'}] },
-                    { name: 'Villa Maya, Trivandrum', type: '🏛️ Fine Dining', details: 'A restored 18th-century Dutch manor serving exquisite Indian and continental cuisine.', coords: [8.4819, 76.9431], reviews: [{name: 'James', rating: 5, comment: 'Incredible ambiance and food.'}] },
+                    { name: 'Paragon, Kozhikode', type: '🌶 Malabar Cuisine', details: 'A legendary restaurant famous for its authentic Malabar Biryani.', coords: [11.2588, 75.7804], reviews: [{name: 'Zain', rating: 5, comment: 'Best biryani I have ever had, period.'}, {name: 'Maria', rating: 5, comment: 'An absolute must-visit.'}] },
+                    { name: 'Villa Maya, Trivandrum', type: '🏛 Fine Dining', details: 'A restored 18th-century Dutch manor serving exquisite Indian and continental cuisine.', coords: [8.4819, 76.9431], reviews: [{name: 'James', rating: 5, comment: 'Incredible ambiance and food.'}] },
                     { name: 'Grand Pavilion, Kochi', type: '🏨 Classic Keralan', details: 'Known for its Syrian Christian delicacies and old-world charm.', coords: [9.9816, 76.2999], reviews: [{name: 'Anjali', rating: 4, comment: 'Authentic Kerala food. Great taste.'}] },
                     { name: 'Dhe Puttu, Kochi', type: '🍚 Puttu Specialist', details: 'Celebrity-owned restaurant serving a wide variety of "puttu" (steamed rice cake).', coords: [9.9976, 76.2974], reviews: [{name: 'Sam', rating: 4, comment: 'So many varieties of puttu to try!'}] },
                     { name: 'Kayees Rahmathulla Cafe, Kochi', type: '🍚 Biryani', details: 'An iconic eatery renowned for its delicious and aromatic mutton biryani.', coords: [9.9650, 76.2570], reviews: [{name: 'Faisal', rating: 5, comment: 'The biryani is legendary for a reason.'}] }
@@ -58,19 +60,71 @@
                     { name: 'Marari Beach', icon: '🌴', details: 'A quiet and pristine beach, perfect for relaxation away from the crowds.', coords: [9.5941, 76.3216] },
                     { name: 'Vagamon', icon: '🌲', details: 'A sleepy hill station with pine forests, meadows, and cascading waterfalls.', coords: [9.6845, 76.9033] },
                     { name: 'Kolukkumalai Tea Estate', icon: '🌄', details: 'The world\'s highest organic tea plantation, offering breathtaking sunrise views.', coords: [9.9679, 77.1065] },
-                    { name: 'Poovar Island', icon: '🏝️', details: 'A beautiful estuary where a river, lake, and the sea meet, creating a unique ecosystem.', coords: [8.3150, 77.0700] },
+                    { name: 'Poovar Island', icon: '🏝', details: 'A beautiful estuary where a river, lake, and the sea meet, creating a unique ecosystem.', coords: [8.3150, 77.0700] },
                     { name: 'Silent Valley National Park', icon: '🦋', details: 'A pristine, untouched rainforest, core of the Nilgiri Biosphere Reserve.', coords: [11.1309, 76.4326]},
-                    { name: 'Kerala Folklore Museum', icon: '🏛️', details: 'A treasure trove of architectural and cultural artifacts in Kochi.', coords: [9.9328, 76.3033]}
+                    { name: 'Kerala Folklore Museum', icon: '🏛', details: 'A treasure trove of architectural and cultural artifacts in Kochi.', coords: [9.9328, 76.3033]}
+                ],
+                 localFoods: [
+                    { name: 'Puttu & Kadala Curry', type: 'Breakfast', description: 'A quintessential Kerala breakfast. Puttu is a steamed cylinder of ground rice layered with coconut shavings. It is served with Kadala Curry, a flavorful black chickpea curry.', ingredients: ['Rice flour', 'Grated coconut', 'Black chickpeas', 'Onion', 'Tomato', 'Spices'] },
+                    { name: 'Appam & Stew', type: 'Breakfast / Dinner', description: 'Appam is a soft, fluffy pancake made from fermented rice batter, with a crispy lace-like edge. It is typically paired with a creamy stew made with coconut milk, vegetables, or meat.', ingredients: ['Rice', 'Coconut', 'Yeast', 'Mixed vegetables/Chicken', 'Coconut milk', 'Spices'] },
+                    { name: 'Idiyappam (Noolappam)', type: 'Breakfast / Dinner', description: 'Also known as string hoppers, Idiyappam is made from rice flour pressed into noodle form and then steamed. It\'s light, delicate, and served with curries or sweetened coconut milk.', ingredients: ['Rice flour', 'Grated coconut', 'Salt'] },
+                    { name: 'Malabar Parotta & Beef Fry', type: 'Lunch / Dinner', description: 'A layered flatbread made from maida flour, known for its flaky, crispy texture. It is famously paired with a spicy and aromatic beef fry, a dry preparation of beef cooked with spices.', ingredients: ['All-purpose flour (Maida)', 'Beef', 'Onion', 'Ginger-garlic paste', 'Spices', 'Coconut oil'] },
+                    { name: 'Kerala Sadya', type: 'Feast', description: 'A grand vegetarian feast served on a banana leaf, featuring a variety of dishes. It includes rice, pickles, pappadam, and a wide range of curries like Sambar, Avial, and Thoran.', ingredients: ['Rice', 'Lentils', 'Assorted vegetables', 'Coconut', 'Yogurt', 'Tamarind', 'Spices'] },
+                    { name: 'Karimeen Pollichathu', type: 'Main Course (Seafood)', description: 'Pearl spot fish (Karimeen) is marinated in a spicy masala paste, wrapped in a banana leaf, and then steamed or grilled. The leaf imparts a unique aroma to the fish.', ingredients: ['Pearl spot fish', 'Onion', 'Tomato', 'Chilli powder', 'Turmeric', 'Banana leaf'] },
+                    { name: 'Thalassery Biryani', type: 'Main Course', description: 'A famous biryani from the Malabar region, made with a special short-grain rice called Kaima rice. It has a unique aroma from the blend of spices and is layered with fried chicken or mutton.', ingredients: ['Kaima rice', 'Chicken/Mutton', 'Onion', 'Ghee', 'Saffron', 'Biryani masala'] },
+                    { name: 'Pazham Pori', type: 'Snack', description: 'A beloved evening snack, also known as Ethakka Appam. Ripe plantain slices are coated in a flour batter and deep-fried until golden brown.', ingredients: ['Ripe plantains', 'All-purpose flour', 'Rice flour', 'Turmeric', 'Sugar'] },
+                    { name: 'Ada Pradhaman', type: 'Dessert', description: 'A traditional Kerala dessert or payasam. It consists of rice pasta flakes (ada) cooked in a sweet and creamy coconut milk and jaggery sauce, flavored with cardamom and nuts.', ingredients: ['Rice ada', 'Jaggery', 'Coconut milk', 'Cardamom', 'Cashews', 'Ghee'] },
+                    { name: 'Ven Pongal', type: 'Breakfast', description: 'A savory South Indian porridge made with rice and yellow moong dal, cooked to a creamy consistency. It is tempered with ghee, black pepper, cumin, and cashews.', ingredients: ['Rice', 'Moong dal', 'Ghee', 'Black peppercorns', 'Cumin seeds', 'Cashews'] },
+                    { name: 'Medu Vada', type: 'Snack / Breakfast', description: 'A popular savory fritter shaped like a doughnut. It is made from a batter of urad dal (black lentils), has a crispy exterior and a soft, fluffy interior, often served with sambar and chutney.', ingredients: ['Urad dal', 'Onion', 'Green chillies', 'Ginger', 'Curry leaves'] }
                 ],
                 activityPool: {
-                    'Kochi': [ { text: 'Explore Fort Kochi & Chinese Fishing Nets.', tags: ['Culture', 'History', 'Photography'] }, { text: 'Visit Mattancherry Palace & Paradesi Synagogue.', tags: ['History', 'Culture'] }, { text: 'Stroll through Jew Town for antiques.', tags: ['Shopping', 'Culture', 'History'] }, { text: 'Watch a Kathakali dance performance.', tags: ['Art & Music', 'Culture'] }, { text: 'Discover the street art of Fort Kochi.', tags: ['Art & Music', 'Photography', 'Culture'] }, { text: 'Go on a culinary tour of local eateries.', tags: ['Foodie', 'Culture'] }, { text: 'Shop for spices and souvenirs at Broadway.', tags: ['Shopping', 'Foodie'] }, { text: 'Visit the Kerala Folklore Museum.', tags: ['History', 'Culture', 'Art & Music'], isGem: true }, { text: 'Witness Onam or Christmas celebrations (seasonal).', tags: ['Festivals', 'Culture'] } ],
-                    'Munnar': [ { text: 'Walk through tea plantations & visit a museum.', tags: ['Nature', 'Relaxation', 'Photography'] }, { text: 'Visit Top Station for panoramic views.', tags: ['Nature', 'Trekking', 'Photography'] }, { text: 'Explore Eravikulam National Park (Nilgiri Tahr).', tags: ['Wildlife', 'Nature', 'Adventure'] }, { text: 'See Mattupetty Dam and enjoy a boat ride.', tags: ['Nature', 'Relaxation'] }, { text: 'Take a Jeep safari to Kolukkumalai Tea Estate.', tags: ['Adventure', 'Nature', 'Photography', 'Trekking'], isGem: true }, { text: 'Go bird watching at the Salim Ali Bird Sanctuary.', tags: ['Wildlife', 'Nature'] }, { text: 'Enjoy a peaceful Shikara ride on Kundala Lake.', tags: ['Relaxation', 'Nature'] }, { text: 'Buy fresh tea and local spices.', tags: ['Shopping', 'Foodie'] } ],
-                    'Thekkady': [ { text: 'Take a boat safari on Periyar Lake.', tags: ['Wildlife', 'Nature', 'Adventure'] }, { text: 'Go on a guided spice plantation tour.', tags: ['Foodie', 'Culture', 'Nature'] }, { text: 'Watch a Kalaripayattu martial arts show.', tags: ['Adventure', 'Culture'] }, { text: 'Discover the misty hills and meadows of Vagamon.', tags: ['Nature', 'Relaxation', 'Trekking', 'Photography'], isGem: true }, { text: 'Take a Keralan cuisine cooking class.', tags: ['Foodie', 'Culture'] }, { text: 'Participate in a night patrol in the jungle.', tags: ['Adventure', 'Wildlife'] }, { text: 'Hike through Silent Valley National Park.', tags: ['Wildlife', 'Nature', 'Trekking', 'Adventure'], isGem: true }, { text: 'Learn about medicinal plants and Ayurveda.', tags: ['Ayurveda', 'Nature'] } ],
-                    'Alleppey': [ { text: 'Spend a day/night on a traditional houseboat.', tags: ['Relaxation', 'Culture', 'Nature'] }, { text: 'Enjoy authentic Keralan meals on the boat.', tags: ['Foodie', 'Culture'] }, { text: 'Witness village life along the backwaters.', tags: ['Culture', 'Photography'] }, { text: 'Unwind on the pristine sands of Marari Beach.', tags: ['Beaches', 'Relaxation', 'Photography'], isGem: true }, { text: 'Explore the backwaters by kayak.', tags: ['Adventure', 'Nature'] }, { text: 'Relax and watch the sunset over the water.', tags: ['Relaxation', 'Photography'] }, { text: 'Watch a snake boat race (seasonal).', tags: ['Festivals', 'Adventure', 'Culture'] }, { text: 'Stay at an Ayurveda and wellness retreat.', tags: ['Ayurveda', 'Relaxation', 'Spirituality'] } ],
-                    'Varkala/Kovalam': [ { text: 'Relax on the cliffside Varkala or Kovalam beaches.', tags: ['Beaches', 'Relaxation'] }, { text: 'Visit the Janardhana Swamy Temple.', tags: ['Spirituality', 'Culture'] }, { text: 'Enjoy swimming, sunbathing, and watersports.', tags: ['Beaches', 'Adventure'] }, { text: 'Experience a rejuvenating Ayurvedic massage.', tags: ['Ayurveda', 'Relaxation'] }, { text: 'Try surfing or stand-up paddleboarding.', tags: ['Adventure', 'Beaches'] }, { text: 'Practice yoga at a cliffside wellness center.', tags: ['Spirituality', 'Relaxation', 'Ayurveda'] }, { text: 'Explore the unique Poovar Island estuary.', tags: ['Nature', 'Beaches', 'Relaxation'], isGem: true }, { text: 'Visit Napier Museum & Zoo in nearby Trivandrum.', tags: ['History', 'Art & Music', 'Wildlife', 'Culture'] } ],
-                    'Wayanad': [ { text: 'Trek to Chembra Peak and see the heart-shaped lake.', tags: ['Trekking', 'Nature', 'Adventure', 'Photography'] }, { text: 'Explore the prehistoric Edakkal Caves.', tags: ['History', 'Adventure', 'Trekking'] }, { text: 'Visit the stunning Soochipara Waterfalls.', tags: ['Nature', 'Adventure', 'Relaxation', 'Photography'] }, { text: 'Go boating at the serene Pookode Lake.', tags: ['Nature', 'Relaxation'] }, { text: 'Visit a local tribal village to learn their heritage.', tags: ['Culture', 'History'] }, { text: 'Witness a Theyyam performance (seasonal).', tags: ['Festivals', 'Culture', 'Spirituality', 'Photography'] }, { text: 'Shop for local honey and handicrafts.', tags: ['Shopping', 'Foodie'] }, { text: 'Watch a Mohiniyattam dance recital.', tags: ['Art & Music', 'Culture', 'Festivals'] } ]
+                    'Kochi': [ { text: 'Explore Fort Kochi & Chinese Fishing Nets.', tags: ['Culture', 'History', 'Photography'], coords: [9.9656, 76.2425] }, { text: 'Visit Mattancherry Palace & Paradesi Synagogue.', tags: ['History', 'Culture'], coords: [9.9583, 76.2597] }, { text: 'Stroll through Jew Town for antiques.', tags: ['Shopping', 'Culture', 'History'], coords: [9.9575, 76.2594] }, { text: 'Watch a Kathakali dance performance.', tags: ['Art & Music', 'Culture'], coords: [9.9678, 76.2415] }, { text: 'Discover the street art of Fort Kochi.', tags: ['Art & Music', 'Photography', 'Culture'], coords: [9.9656, 76.2425] }, { text: 'Go on a culinary tour of local eateries.', tags: ['Foodie', 'Culture'], coords: [9.9650, 76.2570] }, { text: 'Shop for spices and souvenirs at Broadway.', tags: ['Shopping', 'Foodie'], coords: [9.9816, 76.2792] }, { text: 'Visit the Kerala Folklore Museum.', tags: ['History', 'Culture', 'Art & Music'], isGem: true, coords: [9.9328, 76.3033] }, { text: 'Witness Onam or Christmas celebrations (seasonal).', tags: ['Festivals', 'Culture'], coords: [9.9678, 76.2415] } ],
+                    'Munnar': [ { text: 'Walk through tea plantations & visit a museum.', tags: ['Nature', 'Relaxation', 'Photography'], coords: [10.0892, 77.0595] }, { text: 'Visit Top Station for panoramic views.', tags: ['Nature', 'Trekking', 'Photography'], coords: [10.1345, 77.2418] }, { text: 'Explore Eravikulam National Park (Nilgiri Tahr).', tags: ['Wildlife', 'Nature', 'Adventure'], coords: [10.1565, 77.0558] }, { text: 'See Mattupetty Dam and enjoy a boat ride.', tags: ['Nature', 'Relaxation'], coords: [10.1067, 77.1299] }, { text: 'Take a Jeep safari to Kolukkumalai Tea Estate.', tags: ['Adventure', 'Nature', 'Photography', 'Trekking'], isGem: true, coords: [9.9679, 77.1065] }, { text: 'Go bird watching at the Salim Ali Bird Sanctuary.', tags: ['Wildlife', 'Nature'], coords: [10.0210, 76.7118] }, { text: 'Enjoy a peaceful Shikara ride on Kundala Lake.', tags: ['Relaxation', 'Nature'], coords: [10.1292, 77.1683] }, { text: 'Buy fresh tea and local spices.', tags: ['Shopping', 'Foodie'], coords: [10.0889, 77.0597] } ],
+                    'Thekkady': [ { text: 'Take a boat safari on Periyar Lake.', tags: ['Wildlife', 'Nature', 'Adventure'], coords: [9.4678, 77.1444] }, { text: 'Go on a guided spice plantation tour.', tags: ['Foodie', 'Culture', 'Nature'], coords: [9.5828, 77.0322] }, { text: 'Watch a Kalaripayattu martial arts show.', tags: ['Adventure', 'Culture'], coords: [9.5989, 77.0396] }, { text: 'Discover the misty hills and meadows of Vagamon.', tags: ['Nature', 'Relaxation', 'Trekking', 'Photography'], isGem: true, coords: [9.6845, 76.9033] }, { text: 'Take a Keralan cuisine cooking class.', tags: ['Foodie', 'Culture'], coords: [9.5989, 77.0396] }, { text: 'Participate in a night patrol in the jungle.', tags: ['Adventure', 'Wildlife'], coords: [9.4678, 77.1444] }, { text: 'Hike through Silent Valley National Park.', tags: ['Wildlife', 'Nature', 'Trekking', 'Adventure'], isGem: true, coords: [11.1309, 76.4326] }, { text: 'Learn about medicinal plants and Ayurveda.', tags: ['Ayurveda', 'Nature'], coords: [9.5828, 77.0322] } ],
+                    'Alleppey': [ { text: 'Spend a day/night on a traditional houseboat.', tags: ['Relaxation', 'Culture', 'Nature'], coords: [9.5034, 76.3314] }, { text: 'Enjoy authentic Keralan meals on the boat.', tags: ['Foodie', 'Culture'], coords: [9.5034, 76.3314] }, { text: 'Witness village life along the backwaters.', tags: ['Culture', 'Photography'], coords: [9.5034, 76.3314] }, { text: 'Unwind on the pristine sands of Marari Beach.', tags: ['Beaches', 'Relaxation', 'Photography'], isGem: true, coords: [9.5941, 76.3216] }, { text: 'Explore the backwaters by kayak.', tags: ['Adventure', 'Nature'], coords: [9.5034, 76.3314] }, { text: 'Relax and watch the sunset over the water.', tags: ['Relaxation', 'Photography'], coords: [9.4981, 76.3328] }, { text: 'Watch a snake boat race (seasonal).', tags: ['Festivals', 'Adventure', 'Culture'], coords: [9.4981, 76.3328] }, { text: 'Stay at an Ayurveda and wellness retreat.', tags: ['Ayurveda', 'Relaxation', 'Spirituality'], coords: [9.5941, 76.3216] } ],
+                    'Varkala/Kovalam': [ { text: 'Relax on the cliffside Varkala or Kovalam beaches.', tags: ['Beaches', 'Relaxation'], coords: [8.7383, 76.7161] }, { text: 'Visit the Janardhana Swamy Temple.', tags: ['Spirituality', 'Culture'], coords: [8.7346, 76.7143] }, { text: 'Enjoy swimming, sunbathing, and watersports.', tags: ['Beaches', 'Adventure'], coords: [8.4021, 76.9781] }, { text: 'Experience a rejuvenating Ayurvedic massage.', tags: ['Ayurveda', 'Relaxation'], coords: [8.7383, 76.7161] }, { text: 'Try surfing or stand-up paddleboarding.', tags: ['Adventure', 'Beaches'], coords: [8.7383, 76.7161] }, { text: 'Practice yoga at a cliffside wellness center.', tags: ['Spirituality', 'Relaxation', 'Ayurveda'], coords: [8.7383, 76.7161] }, { text: 'Explore the unique Poovar Island estuary.', tags: ['Nature', 'Beaches', 'Relaxation'], isGem: true, coords: [8.3150, 77.0700] }, { text: 'Visit Napier Museum & Zoo in nearby Trivandrum.', tags: ['History', 'Art & Music', 'Wildlife', 'Culture'], coords: [8.5097, 76.9535] } ],
+                    'Wayanad': [ { text: 'Trek to Chembra Peak and see the heart-shaped lake.', tags: ['Trekking', 'Nature', 'Adventure', 'Photography'], coords: [11.5222, 76.0833] }, { text: 'Explore the prehistoric Edakkal Caves.', tags: ['History', 'Adventure', 'Trekking'], coords: [11.6214, 76.2361] }, { text: 'Visit the stunning Soochipara Waterfalls.', tags: ['Nature', 'Adventure', 'Relaxation', 'Photography'], coords: [11.4580, 76.1150] }, { text: 'Go boating at the serene Pookode Lake.', tags: ['Nature', 'Relaxation'], coords: [11.5434, 76.0305] }, { text: 'Visit a local tribal village to learn their heritage.', tags: ['Culture', 'History'], coords: [11.7589, 76.0833] }, { text: 'Witness a Theyyam performance (seasonal).', tags: ['Festivals', 'Culture', 'Spirituality', 'Photography'], coords: [11.7589, 76.0833] }, { text: 'Shop for local honey and handicrafts.', tags: ['Shopping', 'Foodie'], coords: [11.6095, 76.1311] }, { text: 'Watch a Mohiniyattam dance recital.', tags: ['Art & Music', 'Culture', 'Festivals'], coords: [11.6095, 76.1311] } ]
                 },
-                emergencyInfo: { general: '112', police: '100', ambulance: '102', fire: '101', disasterManagement: '1077' },
+                locationDetails: {
+                    'Kochi': { a: true, s: true, c: 'High', t: 'Urban', d: 'City center itself' },
+                    'Munnar': { a: true, s: true, c: 'Medium', t: 'Rural/Town', d: '~110 km from Kochi' },
+                    'Thekkady': { a: true, s: true, c: 'Medium', t: 'Rural/Town', d: '~140 km from Munnar' },
+                    'Alleppey': { a: true, s: true, c: 'Medium', t: 'Urban/Backwaters', d: '~155 km from Thekkady' },
+                    'Varkala/Kovalam': { a: true, s: true, c: 'Medium', t: 'Coastal Town', d: '~160 km from Alleppey' },
+                    'Wayanad': { a: true, s: true, c: 'Low', t: 'Rural/Hilly', d: '~270 km from Kochi' }
+                },
+                activities: [
+                    { category: 'Water Sports', icon: '🌊', list: [ { name: 'Houseboat Cruise', location: 'Alleppey Backwaters' }, { name: 'Kayaking & Canoeing', location: 'Alleppey, Poovar' }, { name: 'Bamboo Rafting', location: 'Periyar Lake, Thekkady' }, { name: 'Surfing', location: 'Varkala Beach' } ] },
+                    { category: 'Trekking & Hiking', icon: '🥾', list: [ { name: 'Chembra Peak Trek', location: 'Wayanad' }, { name: 'Kolukkumalai Tea Estate Trek', location: 'Near Munnar' }, { name: 'Top Station Trek', location: 'Munnar' }, { name: 'Edakkal Caves Hike', location: 'Wayanad' } ] },
+                    { category: 'Wildlife Safaris', icon: '🐘', list: [ { name: 'Boat Safari', location: 'Periyar National Park, Thekkady' }, { name: 'Jeep Safari', location: 'Eravikulam National Park, Munnar' }, { name: 'Jungle Night Patrol', location: 'Thekkady (with guides)' } ] },
+                    { category: 'Cultural Experiences', icon: '🎭', list: [ { name: 'Kathakali Performance', location: 'Fort Kochi' }, { name: 'Kalaripayattu Show', location: 'Thekkady' }, { name: 'Theyyam Ritual (Seasonal)', location: 'Northern Kerala (Kannur)' }, { name: 'Spice Plantation Tour', location: 'Thekkady, Munnar' } ] }
+                ],
+                festivals: [
+                    { name: 'Onam', slogan: 'The Harvest Festival of Kerala', time: 'August/September', places: 'Celebrated statewide, especially vibrant in Thrissur, Kochi, and Trivandrum.' },
+                    { name: 'Thrissur Pooram', slogan: 'The Mother of All Festivals', time: 'April/May', places: 'Vadakkunnathan Temple, Thrissur. A grand spectacle of elephants, music, and fireworks.' },
+                    { name: 'Nehru Trophy Boat Race', slogan: 'The Olympics of the Backwaters', time: '2nd Saturday of August', places: 'Punnamada Lake, Alleppey. A thrilling snake boat race.' },
+                    { name: 'Theyyam', slogan: 'The Dance of the Gods', time: 'December to April', places: 'Various temples in Northern Kerala, especially Kannur and Kasaragod districts.' }
+                ],
+                tourPackages: [
+                    { name: 'Honeymoon Escape', description: 'A romantic journey through misty hills and serene backwaters.', days: 7, interests: ['Relaxation', 'Nature'] },
+                    { name: 'Adventure Seeker', description: 'An action-packed trip for thrill-seekers, from trekking to wildlife safaris.', days: 6, interests: ['Adventure', 'Trekking', 'Wildlife'] },
+                    { name: 'Cultural Explorer', description: 'Immerse yourself in the rich history, art, and traditions of Kerala.', days: 5, interests: ['Culture', 'History', 'Art & Music'] },
+                    { name: 'Foodie Delight', description: 'A culinary tour to taste the diverse and delicious flavors of Kerala cuisine.', days: 4, interests: ['Foodie', 'Culture'] }
+                ],
+                emergencyInfo: { 
+                    general: '112', police: '100', ambulance: '102', fire: '101', disasterManagement: '1077',
+                    hospitals: [
+                        { name: 'Aster Medcity, Kochi', coords: [10.0545, 76.3220] },
+                        { name: 'Lakeshore Hospital, Kochi', coords: [9.9079, 76.3361] },
+                        { name: 'KIMS Hospital, Trivandrum', coords: [8.5306, 76.9133] },
+                        { name: 'Baby Memorial Hospital, Kozhikode', coords: [11.2465, 75.8016]}
+                    ],
+                    pharmacies: [
+                        { name: 'Apollo Pharmacy, MG Road, Kochi', coords: [9.9763, 76.2895] },
+                        { name: 'MedPlus Pharmacy, Trivandrum', coords: [8.5135, 76.9442] },
+                        { name: 'Neethi Medical Store, Kozhikode', coords: [11.2588, 75.7804]}
+                    ]
+                },
                 packingList: { 'Essentials': ['Passport/ID', 'Visa', 'Tickets', 'Cash/Cards', 'Phone & Charger'], 'Clothing': ['Light Cottons', 'Swimwear', 'Rain Jacket', 'Shawl/Jacket', 'Modest Clothes (Temples)'], 'Footwear': ['Sandals/Flip-flops', 'Walking Shoes', 'Water Shoes'], 'Health': ['First-Aid Kit', 'Insect Repellent', 'Sunscreen', 'Hand Sanitizer', 'Personal Meds'], 'Miscellaneous': ['Power Bank', 'Universal Adapter', 'Camera', 'Water Bottle', 'Sunglasses'] }
             }
         };
@@ -105,16 +159,20 @@
                     for (let i = 0; i < numDaysInLocation; i++) {
                         if (dayCounter > days) break;
                         const allActivitiesForLocation = activityPool[location] || [];
-                        let chosenActivitiesText = ["Relax and explore the local area."];
+                        let chosenActivities = [];
                         if (allActivitiesForLocation.length > 0) {
                             const sortedActivities = allActivitiesForLocation
                                 .map(activity => ({ ...activity, score: activity.tags.reduce((acc, tag) => acc + (selectedInterests.includes(tag) ? 1 : 0), 0) + (activity.isGem && selectedInterests.length > 0 ? 1 : 0) }))
                                 .sort((a, b) => b.score - a.score);
                             const activityOffset = i * 3;
-                            chosenActivitiesText = sortedActivities.slice(activityOffset, activityOffset + 3).map(a => a.text);
-                            if(chosenActivitiesText.length === 0) chosenActivitiesText = sortedActivities.slice(0, 3).map(a => a.text);
+                            chosenActivities = sortedActivities.slice(activityOffset, activityOffset + 3);
+                            if(chosenActivities.length === 0) chosenActivities = sortedActivities.slice(0, 3);
                         }
-                       itinerary.push({ day: `Day ${dayCounter}: ${location}`, activities: chosenActivitiesText.length > 0 ? chosenActivitiesText : ["Relax and explore the local area."] });
+                       itinerary.push({ 
+                           day: `Day ${dayCounter}: ${location}`, 
+                           location: location,
+                           activities: chosenActivities.length > 0 ? chosenActivities : [{text: "Relax and explore the local area."}] 
+                       });
                        dayCounter++;
                     }
                 }
@@ -151,19 +209,17 @@
             );
         }
 
-        const getWeatherEmoji = (weather) => {
-            if (!weather || !weather.weather[0]) return '🌍';
-            const id = weather.weather[0].id;
-            if (id >= 200 && id < 300) return '⛈️'; // Thunderstorm
-            if (id >= 300 && id < 400) return '🌦️'; // Drizzle
-            if (id >= 500 && id < 600) return '🌧️'; // Rain
-            if (id >= 600 && id < 700) return '❄️'; // Snow
-            if (id >= 700 && id < 800) return '🌫️'; // Atmosphere (Fog, Mist)
-            if (id === 800) return '☀️'; // Clear
-            if (id === 801) return '🌤️'; // Few clouds
-            if (id === 802) return '☁️'; // Scattered clouds
-            if (id > 802) return '🌥️'; // Broken/overcast clouds
-            return '🌍'; // Default
+        const getWeatherEmoji = (conditionText) => {
+            const text = conditionText.toLowerCase();
+            if (text.includes('thunder')) return '⛈';
+            if (text.includes('drizzle') || text.includes('light rain')) return '🌦';
+            if (text.includes('rain')) return '🌧';
+            if (text.includes('snow') || text.includes('sleet')) return '❄️';
+            if (text.includes('mist') || text.includes('fog')) return '🌫️';
+            if (text.includes('clear') || text.includes('sunny')) return '☀️';
+            if (text.includes('partly cloudy')) return '🌤️';
+            if (text.includes('cloudy') || text.includes('overcast')) return '☁️';
+            return '🌍';
         };
 
         function WeatherWidget({ location }) {
@@ -179,9 +235,13 @@
                     return; 
                 };
                 setIsLoading(true);
-                fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location},IN&appid=${API_KEY}&units=metric`)
-                    .then(response => { if (!response.ok) throw new Error('Weather data not available.'); return response.json(); })
-                    .then(data => { setWeather(data); setIsLoading(false); })
+                fetch(`https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${location},India`)
+                    .then(response => response.json())
+                    .then(data => { 
+                        if (data.error) { throw new Error(data.error.message); }
+                        setWeather(data); 
+                        setIsLoading(false);
+                    })
                     .catch(error => { setError(error); setIsLoading(false); });
             }, [location]);
 
@@ -192,10 +252,10 @@
                 
                 return (
                     <div className="flex items-center gap-3">
-                        <span className="text-2xl">{getWeatherEmoji(weather)}</span>
+                        <span className="text-2xl">{getWeatherEmoji(weather.current.condition.text)}</span>
                         <div className="flex flex-col text-sm">
-                           <span className="font-semibold">{Math.round(weather.main.temp)}°C</span>
-                           <span className="text-xs capitalize">{weather.weather[0].description}</span>
+                           <span className="font-semibold">{Math.round(weather.current.temp_c)}°C</span>
+                           <span className="text-xs capitalize">{weather.current.condition.text}</span>
                         </div>
                     </div>
                 );
@@ -253,14 +313,20 @@
             const [searchInput, setSearchInput] = useState('');
             const [daysInput, setDaysInput] = useState('');
             const [selectedInterests, setSelectedInterests] = useState([]);
+            const [budgetLevel, setBudgetLevel] = useState('Mid-range');
             const [errorMessage, setErrorMessage] = useState('');
             const [expenses, setExpenses] = useState([]);
+            const [totalBudget, setTotalBudget] = useState(0);
             const [numberOfPeople, setNumberOfPeople] = useState(1);
             const [expenseDesc, setExpenseDesc] = useState('');
             const [expenseAmount, setExpenseAmount] = useState('');
             const [activeTab, setActiveTab] = useState('itinerary');
+            const [activeTool, setActiveTool] = useState('packing');
+            const [foodSearch, setFoodSearch] = useState('');
+            const [knowMoreModal, setKnowMoreModal] = useState(null);
             const [savedTripExists, setSavedTripExists] = useState(false);
             const [saveButtonText, setSaveButtonText] = useState('Save Trip');
+            const [voices, setVoices] = useState([]);
             
             const cardColors = [
                 "bg-sky-50 border-sky-200 dark:bg-sky-900/50 dark:border-sky-800",
@@ -271,10 +337,46 @@
                 "bg-lime-50 border-lime-200 dark:bg-lime-900/50 dark:border-lime-800",
             ];
 
-            useEffect(() => { const savedTrip = localStorage.getItem('savedHack2TravelTrip'); setSavedTripExists(!!savedTrip); }, []);
-            useEffect(() => { const savedTheme = localStorage.getItem('theme'); const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches; if (savedTheme === 'dark' || (!savedTheme && prefersDark)) { document.documentElement.classList.add('dark'); setTheme('dark'); } else { document.documentElement.classList.remove('dark'); setTheme('light'); } }, []);
+            useEffect(() => { 
+                const savedTrip = localStorage.getItem('savedHack2TravelTrip'); 
+                setSavedTripExists(!!savedTrip); 
+                const handleVoicesChanged = () => setVoices(speechSynthesis.getVoices());
+                speechSynthesis.onvoiceschanged = handleVoicesChanged;
+                handleVoicesChanged();
+            }, []);
             
-            const toggleTheme = () => { const newTheme = theme === 'light' ? 'dark' : 'light'; setTheme(newTheme); localStorage.setItem('theme', newTheme); document.documentElement.classList.toggle('dark'); };
+            useEffect(() => {
+                const savedTheme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+                setTheme(initialTheme);
+                if (initialTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }, []);
+
+            const speak = (text) => {
+                if (speechSynthesis.speaking) { return; }
+                const utterance = new SpeechSynthesisUtterance(text);
+                const malayalamVoice = voices.find(v => v.lang === 'ml-IN');
+                if (malayalamVoice) { utterance.voice = malayalamVoice; }
+                utterance.rate = 0.9;
+                speechSynthesis.speak(utterance);
+            };
+
+            const toggleTheme = () => {
+                const newTheme = theme === 'light' ? 'dark' : 'light';
+                setTheme(newTheme);
+                localStorage.setItem('theme', newTheme);
+                if (newTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            };
+            
             const handleInterestClick = (interest) => { setSelectedInterests(prev => prev.includes(interest) ? prev.filter(i => i !== interest) : [...prev, interest]); };
             
             const handleSearchSubmit = (e) => {
@@ -284,23 +386,44 @@
                 if (destination && daysInput > 0) {
                     setIsLoading(true);
                     setErrorMessage('');
+                    const dailyRates = { 'Budget': 2500, 'Mid-range': 6000, 'Luxury': 15000 };
+                    const predictedBudget = dailyRates[budgetLevel] * parseInt(daysInput, 10);
+                    setTotalBudget(predictedBudget);
                     setTimeout(() => {
                         setTripData({ ...destination, itinerary: generateItinerary(destination.activityPool, parseInt(daysInput, 10), selectedInterests) });
                         setActiveTab('itinerary');
+                        setActiveTool('packing');
                         setView('destination');
                         setIsLoading(false);
                     }, 800);
                 } else { setErrorMessage('Please enter "Kerala" and a valid number of days to begin.'); }
             };
 
-            const handleBackToSearch = () => { setView('search'); setTripData(null); setSearchInput(''); setDaysInput(''); setSelectedInterests([]); setExpenses([]); setNumberOfPeople(1); setSaveButtonText('Save Trip'); };
+            const handlePackageSelect = (pkg) => {
+                setIsLoading(true);
+                setDaysInput(pkg.days.toString());
+                setSelectedInterests(pkg.interests);
+                const dailyRates = { 'Budget': 2500, 'Mid-range': 6000, 'Luxury': 15000 };
+                const predictedBudget = dailyRates[budgetLevel] * pkg.days;
+                setTotalBudget(predictedBudget);
+                 setTimeout(() => {
+                    setTripData({ ...destinations['kerala'], itinerary: generateItinerary(destinations['kerala'].activityPool, pkg.days, pkg.interests) });
+                    setActiveTab('itinerary');
+                    setActiveTool('packing');
+                    setView('destination');
+                    setIsLoading(false);
+                }, 800);
+            };
+
+            const handleBackToSearch = () => { setView('search'); setTripData(null); setSearchInput(''); setDaysInput(''); setSelectedInterests([]); setExpenses([]); setNumberOfPeople(1); setTotalBudget(0); setSaveButtonText('Save Trip'); };
             const addExpense = () => { const amount = parseFloat(expenseAmount); if (expenseDesc && !isNaN(amount) && amount > 0) { setExpenses([...expenses, { description: expenseDesc, amount }]); setExpenseDesc(''); setExpenseAmount(''); } };
             const deleteExpense = (indexToDelete) => { setExpenses(expenses.filter((_, index) => index !== indexToDelete)); };
-            const totalAmount = expenses.reduce((sum, exp) => sum + exp.amount, 0);
-            const perPersonAmount = totalAmount / (numberOfPeople || 1);
+            const totalAmountSpent = expenses.reduce((sum, exp) => sum + exp.amount, 0);
+            const perPersonAmount = totalAmountSpent / (numberOfPeople || 1);
+            const budgetProgress = totalBudget > 0 ? (totalAmountSpent / totalBudget) * 100 : 0;
 
             const handleSaveTrip = () => {
-                const dataToSave = { tripData, daysInput, selectedInterests, expenses, numberOfPeople, activeTab };
+                const dataToSave = { tripData, daysInput, selectedInterests, budgetLevel, expenses, totalBudget, numberOfPeople, activeTab, activeTool };
                 localStorage.setItem('savedHack2TravelTrip', JSON.stringify(dataToSave));
                 setSaveButtonText('Trip Saved!');
                 setSavedTripExists(true);
@@ -314,9 +437,12 @@
                         setTripData(savedData.tripData);
                         setDaysInput(savedData.daysInput);
                         setSelectedInterests(savedData.selectedInterests);
+                        setBudgetLevel(savedData.budgetLevel || 'Mid-range');
                         setExpenses(savedData.expenses || []);
+                        setTotalBudget(savedData.totalBudget || 0);
                         setNumberOfPeople(savedData.numberOfPeople || 1);
                         setActiveTab(savedData.activeTab || 'itinerary');
+                        setActiveTool(savedData.activeTool || 'packing');
                         setView('destination');
                         setIsLoading(false);
                     }, 800);
@@ -326,6 +452,11 @@
                 localStorage.removeItem('savedHack2TravelTrip');
                 setSavedTripExists(false);
             };
+            
+            const filteredFoods = tripData ? tripData.localFoods.filter(food =>
+                food.name.toLowerCase().includes(foodSearch.toLowerCase()) ||
+                food.description.toLowerCase().includes(foodSearch.toLowerCase())
+            ) : [];
 
             return (
                 <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-black text-gray-800 dark:text-gray-200">
@@ -346,7 +477,13 @@
                         .initial-hidden { opacity: 0; }
                         .card-animation { animation: deal-in-animation 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
 
-                        .interest-tag.selected { background-color: #6366f1; color: white; }
+                        @keyframes content-fade-in {
+                            from { opacity: 0; transform: translateY(10px); }
+                            to { opacity: 1; transform: translateY(0); }
+                        }
+                        .content-animation { animation: content-fade-in 0.5s ease-out forwards; }
+
+                        .interest-tag.selected, .budget-btn.selected { background-color: #6366f1; color: white; }
                         .header-logo { height: 48px; width: 48px; margin-right: 12px; }
                         .app-title { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.75rem; background-image: linear-gradient(to right, #4f46e5, #a855f7); color: transparent; -webkit-background-clip: text; background-clip: text; }
                         .dark .app-title { background-image: linear-gradient(to right, #818cf8, #c084fc); }
@@ -392,6 +529,10 @@
                                         <label className="block text-white text-center font-semibold mb-3">Select Your Interests</label>
                                         <div className="flex flex-wrap justify-center gap-2">{interests.map(interest => (<button key={interest} type="button" onClick={() => handleInterestClick(interest)} className={`interest-tag bg-white/20 hover:bg-white/40 text-white font-medium py-2 px-4 rounded-full transition-all duration-200 ${selectedInterests.includes(interest) ? 'selected' : ''}`}>{interest}</button>))}</div>
                                     </div>
+                                    <div className="bg-black/20 backdrop-blur-sm p-4 rounded-lg">
+                                        <label className="block text-white text-center font-semibold mb-3">Select Your Budget</label>
+                                        <div className="flex justify-center gap-2">{['Budget', 'Mid-range', 'Luxury'].map(level => (<button key={level} type="button" onClick={() => setBudgetLevel(level)} className={`budget-btn bg-white/20 hover:bg-white/40 text-white font-medium py-2 px-5 rounded-full transition-all duration-200 ${budgetLevel === level ? 'selected' : ''}`}>{level}</button>))}</div>
+                                    </div>
                                     <input type="number" value={daysInput} onChange={(e) => setDaysInput(e.target.value)} min="1" placeholder="Number of days" className="w-full p-4 text-gray-900 rounded-lg shadow-lg focus:ring-4 focus:ring-indigo-400 transition" required />
                                     <button type="submit" className="w-full p-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg shadow-lg hover:from-indigo-700 hover:to-purple-700 font-semibold text-lg flex items-center justify-center gap-2 transition-all transform hover:scale-105" style={{animation: 'pulse 2.5s infinite'}}>
                                         <span>Plan My Trip</span>
@@ -429,25 +570,64 @@
                                 </div>
 
                                 <div className="mt-8 border-b border-gray-200 dark:border-gray-700 initial-hidden card-animation" style={{ animationDelay: '0.2s' }}>
-                                    <nav className="flex -mb-px space-x-2 md:space-x-6">
-                                        {['itinerary', 'explore', 'tools', 'info'].map(tab => (
-                                            <button key={tab} onClick={() => setActiveTab(tab)} className={`tab-button ${activeTab === tab ? 'active' : ''}`}>{tab.charAt(0).toUpperCase() + tab.slice(1)}</button>
+                                    <nav className="flex -mb-px space-x-2 md:space-x-6 overflow-x-auto">
+                                        {['itinerary', 'packages', 'activities', 'explore', 'tools', 'info'].map(tab => (
+                                            <button key={tab} onClick={() => setActiveTab(tab)} className={`tab-button flex-shrink-0 ${activeTab === tab ? 'active' : ''}`}>{tab.charAt(0).toUpperCase() + tab.slice(1)}</button>
                                         ))}
                                     </nav>
                                 </div>
                                 
-                                <div className="mt-8">
+                                <div className="mt-8 content-animation" key={activeTab}>
                                     {activeTab === 'itinerary' && (
                                         <div>
-                                            <h3 className="text-3xl font-bold mb-6 text-center initial-hidden card-animation" style={{ animationDelay: '0.3s' }}>Your {daysInput}-Day Itinerary</h3>
+                                            <h3 className="text-3xl font-bold mb-6 text-center">Your {daysInput}-Day Itinerary</h3>
                                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                                 {tripData.itinerary.map((item, index) => (
-                                                    <div key={item.day} className={`initial-hidden card-animation colored-card rounded-xl p-6 flex flex-col ${cardColors[index % cardColors.length]}`} style={{ animationDelay: `${0.4 + index * 0.1}s` }}>
-                                                        <h4 className="font-bold text-xl text-gray-800 dark:text-white border-b border-black/10 dark:border-white/10 pb-2 mb-3">{item.day}</h4>
-                                                        <ul className="space-y-2 list-disc list-inside flex-grow text-gray-700 dark:text-gray-300">{item.activities.map(act => <li key={act}>{act}</li>)}</ul>
-                                                        <div className="text-gray-600 dark:text-gray-400">
-                                                            <WeatherWidget location={item.day.split(': ')[1]} />
+                                                    <div key={item.day} className={`colored-card rounded-xl p-6 flex flex-col ${cardColors[index % cardColors.length]}`} >
+                                                        <div className="flex justify-between items-start">
+                                                            <h4 className="font-bold text-xl text-gray-800 dark:text-white mb-3 flex-1">{item.day}</h4>
+                                                            <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.location)}`} target="_blank" rel="noopener noreferrer" className="p-1 text-indigo-500 hover:text-indigo-700 flex-shrink-0"><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" /></svg></a>
                                                         </div>
+                                                        <ul className="space-y-2 list-disc list-inside flex-grow text-gray-700 dark:text-gray-300 border-t border-black/10 dark:border-white/10 pt-3">{item.activities.map(act => <li key={act.text}>{act.text}</li>)}</ul>
+                                                        <button onClick={() => setKnowMoreModal(tripData.locationDetails[item.location] || null)} className="mt-4 text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:underline">Know More</button>
+                                                        <div className="text-gray-600 dark:text-gray-400">
+                                                            <WeatherWidget location={item.location} />
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+                                     {activeTab === 'packages' && (
+                                        <div>
+                                            <h3 className="text-3xl font-bold mb-6 text-center">Recommended Tour Packages</h3>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                                {tripData.tourPackages.map((pkg, index) => (
+                                                    <div key={pkg.name} className={`colored-card rounded-xl p-6 flex flex-col text-center ${cardColors[index % cardColors.length]}`}>
+                                                        <h4 className="font-bold text-xl text-gray-800 dark:text-white">{pkg.name}</h4>
+                                                        <p className="text-gray-700 dark:text-gray-300 my-3 flex-grow">{pkg.description}</p>
+                                                        <p className="font-semibold text-gray-600 dark:text-gray-400 mb-4">{pkg.days} Days</p>
+                                                        <button onClick={() => handlePackageSelect(pkg)} className="mt-auto w-full p-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-semibold transition-colors">Plan This Trip</button>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+                                    {activeTab === 'activities' && (
+                                        <div>
+                                            <h3 className="text-3xl font-bold mb-6 text-center">Activities in Kerala</h3>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                                                {tripData.activities.map((activityCat, index) => (
+                                                    <div key={activityCat.category} className={`colored-card rounded-xl p-6 ${cardColors[index % cardColors.length]}`}>
+                                                        <h4 className="font-bold text-xl text-gray-800 dark:text-white mb-4 flex items-center gap-3"><span className="text-3xl">{activityCat.icon}</span> {activityCat.category}</h4>
+                                                        <ul className="space-y-3">
+                                                            {activityCat.list.map(item => (
+                                                                <li key={item.name} className="p-3 bg-white/50 dark:bg-black/20 rounded-lg">
+                                                                    <p className="font-semibold text-gray-800 dark:text-gray-200">{item.name}</p>
+                                                                    <p className="text-sm text-gray-600 dark:text-gray-400">{item.location}</p>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
                                                     </div>
                                                 ))}
                                             </div>
@@ -455,17 +635,17 @@
                                     )}
                                     {activeTab === 'explore' && (
                                        <div className="space-y-12">
-                                            <div className="initial-hidden card-animation" style={{animationDelay: '0.3s'}}><MapComponent places={[...tripData.attractions, ...tripData.restaurants, ...tripData.hiddenGems]} /></div>
+                                            <div><MapComponent places={[...tripData.attractions, ...tripData.restaurants, ...tripData.hiddenGems]} /></div>
                                             
-                                            {[{title: 'Top Attractions', data: tripData.attractions}, {title: 'Top Restaurants', data: tripData.restaurants}, {title: 'Hidden Gems', data: tripData.hiddenGems}].map((section, sectionIndex) => (
+                                            {[{title: 'Top Attractions', data: tripData.attractions}, {title: 'Top Restaurants', data: tripData.restaurants}, {title: 'Hidden Gems', data: tripData.hiddenGems}].map((section) => (
                                                 <div key={section.title}>
-                                                    <h3 className="text-3xl font-bold mb-6 text-center initial-hidden card-animation" style={{ animationDelay: `${0.4 + sectionIndex * 0.2}s` }}>{section.title}</h3>
+                                                    <h3 className="text-3xl font-bold mb-6 text-center">{section.title}</h3>
                                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                                         {section.data.map((item, itemIndex) => {
                                                             const avgRating = item.reviews && item.reviews.length > 0 ? (item.reviews.reduce((sum, rev) => sum + rev.rating, 0) / item.reviews.length).toFixed(1) : 0;
                                                             return (
-                                                                <div key={item.name} className={`initial-hidden card-animation colored-card rounded-lg p-6 h-full flex flex-col ${cardColors[(itemIndex + sectionIndex*2) % cardColors.length]}`} style={{ animationDelay: `${0.5 + sectionIndex * 0.2 + itemIndex * 0.1}s` }}>
-                                                                    <div className="flex items-start space-x-4"><div className="text-4xl">{item.icon || item.type.split(' ')[0]}</div><div className="flex-1"><h4 className="font-bold text-lg text-gray-800 dark:text-white">{item.name}</h4>{item.type && <p className="text-sm font-semibold text-gray-500 dark:text-gray-400">{item.type.split(' ').slice(1).join(' ')}</p>}<p className="mt-1 text-gray-700 dark:text-gray-300">{item.details}</p></div></div>
+                                                                <div key={item.name} className={`colored-card rounded-lg p-6 h-full flex flex-col`}>
+                                                                    <div className="flex items-start space-x-4"><div className="text-4xl flex-shrink-0">{item.icon || (item.type && item.type.split(' ')[0])}</div><div className="flex-1"><h4 className="font-bold text-lg text-gray-800 dark:text-white">{item.name}</h4>{item.type && <p className="text-sm font-semibold text-gray-500 dark:text-gray-400">{item.type.split(' ').slice(1).join(' ')}</p>}<p className="mt-1 text-gray-700 dark:text-gray-300">{item.details}</p></div><a href={`https://www.google.com/maps/search/?api=1&query=${item.coords[0]},${item.coords[1]}`} target="_blank" rel="noopener noreferrer" className="p-2 text-indigo-500 hover:text-indigo-700 flex-shrink-0"><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" /></svg></a></div>
                                                                     {item.reviews && item.reviews.length > 0 && (<div className="mt-4 pt-4 border-t border-black/10 dark:border-white/10 text-gray-600 dark:text-gray-400 flex items-center gap-2"><StarRating rating={avgRating} /><span className="text-sm font-semibold ">{avgRating}</span><span className="text-sm">({item.reviews.length} reviews)</span></div>)}
                                                                 </div>
                                                             )
@@ -476,18 +656,101 @@
                                             </div>
                                     )}
                                     {activeTab === 'tools' && (
-                                        <div className="space-y-12">
-                                            <div className="initial-hidden card-animation" style={{ animationDelay: '0.3s' }}><div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg"><h3 className="text-3xl font-bold mb-6 text-center pt-8">Smart Packing Checklist</h3><div className="p-8"><div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">{Object.entries(tripData.packingList).map(([category, items]) => (<div key={category}><h4 className="font-bold text-lg mb-3 text-indigo-700 dark:text-indigo-400">{category}</h4><ul className="space-y-3">{items.map(item => (<li key={item} className="custom-checkbox"><input type="checkbox" id={item.replace(/\s+/g, '-')} /><label htmlFor={item.replace(/\s+/g, '-')}><span className="checkbox-box mr-3"><svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg></span><span className="checkbox-label transition-colors">{item}</span></label></li>))}</ul></div>))}</div></div></div></div>
-                                            <div className="initial-hidden card-animation" style={{ animationDelay: '0.4s' }}><h3 className="text-3xl font-bold mb-6 text-center">Group Expense Splitter</h3><div className="grid grid-cols-1 md:grid-cols-2 gap-8"><div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"><h4 className="font-bold text-xl mb-4">Add New Expense</h4><div className="space-y-4"><input type="text" value={expenseDesc} onChange={(e) => setExpenseDesc(e.target.value)} placeholder="Expense description" className="w-full p-3 bg-gray-100 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600 border rounded-lg focus:ring-2 focus:ring-indigo-500 transition" /><input type="number" value={expenseAmount} onChange={(e) => setExpenseAmount(e.target.value)} placeholder="Amount (₹)" min="0" className="w-full p-3 bg-gray-100 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600 border rounded-lg focus:ring-2 focus:ring-indigo-500 transition" /><button onClick={addExpense} className="w-full p-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-semibold transition-colors">Add Expense</button></div></div><div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"><h4 className="font-bold text-xl mb-4">Expense Summary</h4><div className="mb-4"><label htmlFor="people-count" className="block text-sm font-medium mb-1">Number of People:</label><input type="number" id="people-count" value={numberOfPeople} onChange={e => setNumberOfPeople(Math.max(1, parseInt(e.target.value, 10)))} min="1" className="w-full p-3 bg-gray-100 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600 border rounded-lg focus:ring-2 focus:ring-indigo-500 transition" /></div><ul className="space-y-2 mb-4 h-32 overflow-y-auto pr-2">{expenses.length > 0 ? expenses.map((exp, index) => (<li key={index} className={`flex justify-between items-center p-2 rounded-md ${index % 2 === 0 ? 'bg-gray-50 dark:bg-gray-700/50' : ''}`}><span>{exp.description}</span><div className="flex items-center gap-4"><span className="font-semibold">₹{exp.amount.toFixed(2)}</span><button onClick={() => deleteExpense(index)} className="text-red-500 hover:text-red-700"><svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button></div></li>)) : <div className="text-center text-gray-500 pt-8">No expenses added yet.</div>}</ul><div className="border-t-2 border-gray-200 dark:border-gray-700 pt-4 space-y-2"><div className="flex justify-between font-bold text-lg"><span>Total:</span> <span>₹{totalAmount.toFixed(2)}</span></div><div className="flex justify-between font-bold text-lg text-indigo-600 dark:text-indigo-400"><span>Per Person:</span> <span>₹{perPersonAmount.toFixed(2)}</span></div></div></div></div></div>
-                                            <div className="initial-hidden card-animation" style={{ animationDelay: '0.5s' }}><div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg"><h3 className="text-3xl font-bold mb-6 text-center pt-8">Language Helper (Malayalam)</h3><div className="p-8 grid grid-cols-2 md:grid-cols-4 gap-4">{Object.entries(translations).map(([english, malayalam]) => (<div key={english} className="p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg shadow-sm"><p className="font-semibold">{english.charAt(0).toUpperCase() + english.slice(1)}</p><p className="text-indigo-600 dark:text-indigo-400">{malayalam}</p></div>))}</div></div></div>
+                                        <div>
+                                             <div className="flex justify-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700 pb-4">
+                                                 {[ {id: 'packing', label: 'Packing List', icon: '🧳'}, {id: 'budget', label: 'Budget Planner', icon: '💰'}, {id: 'language', label: 'Language Helper', icon: '🗣️'}, {id: 'food', label: 'Food Guide', icon: '🥘'}, {id: 'festivals', label: 'Festival Tracker', icon: '🎉'} ].map(tool => (
+                                                    <button key={tool.id} onClick={() => setActiveTool(tool.id)} className={`px-4 py-2 font-semibold rounded-lg transition-colors flex items-center gap-2 ${activeTool === tool.id ? 'bg-indigo-600 text-white' : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'}`}>
+                                                        <span>{tool.icon}</span><span>{tool.label}</span>
+                                                    </button>
+                                                 ))}
+                                             </div>
+                                             <div className="content-animation" key={activeTool}>
+                                                 {activeTool === 'packing' && (
+                                                    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg"><h3 className="text-3xl font-bold mb-6 text-center pt-8">Smart Packing Checklist</h3><div className="p-8"><div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">{Object.entries(tripData.packingList).map(([category, items]) => (<div key={category}><h4 className="font-bold text-lg mb-3 text-indigo-700 dark:text-indigo-400">{category}</h4><ul className="space-y-3">{items.map(item => (<li key={item} className="custom-checkbox"><input type="checkbox" id={item.replace(/\s+/g, '-')} /><label htmlFor={item.replace(/\s+/g, '-')}><span className="checkbox-box mr-3"><svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg></span><span className="checkbox-label transition-colors">{item}</span></label></li>))}</ul></div>))}</div></div></div>
+                                                 )}
+                                                 {activeTool === 'budget' && (
+                                                     <div><h3 className="text-3xl font-bold mb-6 text-center">Trip Budget Planner</h3><div className="grid grid-cols-1 md:grid-cols-5 gap-8"><div className="md:col-span-2 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"><h4 className="font-bold text-xl mb-4">Budget Overview</h4><div className="space-y-4"><div className="text-center bg-indigo-50 dark:bg-indigo-900/50 p-3 rounded-lg"><p className="text-sm text-indigo-800 dark:text-indigo-200">Suggested Budget for a <span className="font-bold">{budgetLevel}</span> trip:</p><p className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">₹{totalBudget.toLocaleString('en-IN')}</p></div><label className="block text-sm font-medium mb-1">Set Your Total Budget (₹)</label><input type="number" value={totalBudget} onChange={e => setTotalBudget(parseFloat(e.target.value) || 0)} placeholder="e.g., 50000" className="w-full p-3 bg-gray-100 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600 border rounded-lg focus:ring-2 focus:ring-indigo-500 transition" /><div><label className="block text-sm font-medium mb-1">Budget Usage</label><div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4"><div className={`h-4 rounded-full transition-all duration-500 ${budgetProgress > 90 ? 'bg-red-500' : budgetProgress > 70 ? 'bg-amber-500' : 'bg-green-500'}`} style={{ width: `${Math.min(budgetProgress, 100)}%` }}></div></div></div><div className="border-t-2 border-gray-200 dark:border-gray-700 pt-4 space-y-2"><div className="flex justify-between font-semibold"><span>Spent:</span> <span>₹{totalAmountSpent.toFixed(2)}</span></div><div className={`flex justify-between font-bold text-lg ${totalBudget - totalAmountSpent < 0 ? 'text-red-500' : ''}`}><span>Remaining:</span> <span>₹{(totalBudget - totalAmountSpent).toFixed(2)}</span></div></div></div></div><div className="md:col-span-3 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"><h4 className="font-bold text-xl mb-4">Log & Split Expenses</h4><div className="grid grid-cols-3 gap-4 mb-4"><input type="text" value={expenseDesc} onChange={(e) => setExpenseDesc(e.target.value)} placeholder="Expense (e.g., Dinner)" className="col-span-2 w-full p-3 bg-gray-100 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600 border rounded-lg focus:ring-2 focus:ring-indigo-500 transition" /><input type="number" value={expenseAmount} onChange={(e) => setExpenseAmount(e.target.value)} placeholder="Amount (₹)" min="0" className="w-full p-3 bg-gray-100 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600 border rounded-lg focus:ring-2 focus:ring-indigo-500 transition" /></div><button onClick={addExpense} className="w-full mb-4 p-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-semibold transition-colors">Add Expense</button><ul className="space-y-2 mb-4 h-32 overflow-y-auto pr-2">{expenses.length > 0 ? expenses.map((exp, index) => (<li key={index} className={`flex justify-between items-center p-2 rounded-md ${index % 2 === 0 ? 'bg-gray-50 dark:bg-gray-700/50' : ''}`}><span>{exp.description}</span><div className="flex items-center gap-4"><span className="font-semibold">₹{exp.amount.toFixed(2)}</span><button onClick={() => deleteExpense(index)} className="text-red-500 hover:text-red-700"><svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button></div></li>)) : <div className="text-center text-gray-500 pt-8">No expenses added yet.</div>}</ul><div className="border-t-2 border-gray-200 dark:border-gray-700 pt-4"><div className="flex items-center gap-4"><label htmlFor="people-count" className="block text-sm font-medium">Split among:</label><input type="number" id="people-count" value={numberOfPeople} onChange={e => setNumberOfPeople(Math.max(1, parseInt(e.target.value, 10)))} min="1" className="w-24 p-2 bg-gray-100 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600 border rounded-lg focus:ring-2 focus:ring-indigo-500 transition" /><div className="text-right flex-grow"><span className="font-bold text-lg text-indigo-600 dark:text-indigo-400">Per Person: <span>₹{perPersonAmount.toFixed(2)}</span></span></div></div></div></div></div></div>
+                                                 )}
+                                                 {activeTool === 'language' && (
+                                                    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg"><h3 className="text-3xl font-bold mb-6 text-center pt-8">Language Helper (Malayalam)</h3><div className="p-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">{Object.entries(translations).map(([english, malayalam]) => (<div key={english} className="p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg shadow-sm flex justify-between items-center"><div ><p className="font-semibold">{english.charAt(0).toUpperCase() + english.slice(1)}</p><p className="text-indigo-600 dark:text-indigo-400">{malayalam}</p></div><button onClick={() => speak(malayalam)} className="p-2 text-indigo-500 hover:text-indigo-700"><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" /><path d="M5.5 4.5a.5.5 0 01.5-.5h2a.5.5 0 010 1h-2a.5.5 0 01-.5-.5zM6 6a.5.5 0 00-.5.5v2a.5.5 0 001 0V6.5A.5.5 0 006 6zM13 10a1 1 0 011-1h.5a.5.5 0 000-1H14a1 1 0 01-1-1V4a1 1 0 112 0v5a3 3 0 01-3 3z" /></svg></button></div>))}</div></div>
+                                                 )}
+                                                 {activeTool === 'food' && (
+                                                    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+                                                        <h3 className="text-3xl font-bold mb-4 text-center pt-8">Local Food Guide</h3>
+                                                        <div className="px-8 pb-4">
+                                                            <div className="relative">
+                                                                <input type="text" value={foodSearch} onChange={e => setFoodSearch(e.target.value)} placeholder="Search for a dish..." className="w-full p-3 pl-10 bg-gray-100 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600 border rounded-lg focus:ring-2 focus:ring-indigo-500 transition" />
+                                                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" /></svg></div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                                            {filteredFoods.length > 0 ? filteredFoods.map((food, index) => (
+                                                                <div key={food.name} className={`colored-card rounded-lg p-6 ${cardColors[index % cardColors.length]}`}>
+                                                                    <h4 className="font-bold text-xl text-gray-800 dark:text-white">{food.name}</h4>
+                                                                    <p className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">{food.type}</p>
+                                                                    <p className="text-gray-700 dark:text-gray-300 mb-4">{food.description}</p>
+                                                                    <div>
+                                                                        <h5 className="font-semibold text-gray-800 dark:text-white mb-1">Ingredients:</h5>
+                                                                        <ul className="list-disc list-inside text-sm text-gray-600 dark:text-gray-400">
+                                                                            {food.ingredients.map(ing => <li key={ing}>{ing}</li>)}
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            )) : <div className="md:col-span-2 lg:col-span-3 text-center py-10 text-gray-500">No dishes found matching your search.</div>}
+                                                        </div>
+                                                    </div>
+                                                 )}
+                                                 {activeTool === 'festivals' && (
+                                                    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+                                                        <h3 className="text-3xl font-bold mb-6 text-center pt-8">Festival Tracker</h3>
+                                                        <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                            {tripData.festivals.map((festival, index) => (
+                                                                <div key={festival.name} className={`colored-card rounded-lg p-6 text-center ${cardColors[(index+2) % cardColors.length]}`}>
+                                                                    <h4 className="font-bold text-2xl text-gray-800 dark:text-white">{festival.name}</h4>
+                                                                    <p className="text-gray-600 dark:text-gray-300 italic my-2">"{festival.slogan}"</p>
+                                                                    <p className="font-semibold text-indigo-600 dark:text-indigo-400 mb-3">{festival.time}</p>
+                                                                    <p className="text-gray-700 dark:text-gray-400">{festival.places}</p>
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                 )}
+                                             </div>
                                         </div>
                                     )}
                                     {activeTab === 'info' && (
-                                        <div className="initial-hidden card-animation" style={{ animationDelay: '0.3s' }}>
-                                             <div className="mt-6"><h3 className="text-3xl font-bold mb-6 text-center">Emergency Information</h3><div className="grid grid-cols-2 md:grid-cols-5 gap-4">{Object.entries(tripData.emergencyInfo).map(([service, number]) => { const serviceQuery = { police: 'nearest police station', ambulance: 'nearest hospital', fire: 'nearest fire station', general: 'emergency services', disasterManagement: 'disaster management office' }[service] || 'emergency services'; const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(serviceQuery)}`; return (<a href={mapUrl} target="_blank" rel="noopener noreferrer" key={service} className="block colored-card border-red-200 dark:border-red-800"><div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg text-center h-full flex flex-col justify-center"><p className="font-semibold capitalize text-red-800 dark:text-red-200">{service.replace(/([A-Z])/g, ' $1')}</p><p className="text-2xl font-bold text-red-600 dark:text-red-300">{number}</p></div></a>); })}</div></div>
+                                        <div>
+                                            <h3 className="text-3xl font-bold mb-6 text-center">Emergency Information</h3>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                                <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
+                                                    <h4 className="font-bold text-xl mb-4">Important Numbers</h4>
+                                                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">{Object.entries(tripData.emergencyInfo).filter(([key]) => typeof tripData.emergencyInfo[key] === 'string').map(([service, number]) => (<div key={service} className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg text-center h-full flex flex-col justify-center"><p className="font-semibold capitalize text-red-800 dark:text-red-200">{service.replace(/([A-Z])/g, ' $1')}</p><p className="text-2xl font-bold text-red-600 dark:text-red-300">{number}</p></div>))}</div>
+                                                </div>
+                                                <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
+                                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                                        <div><h4 className="font-bold text-lg mb-3 text-indigo-700 dark:text-indigo-400">Nearby Hospitals</h4><ul className="space-y-2">{tripData.emergencyInfo.hospitals.map(item => (<li key={item.name} className="flex justify-between items-center p-2 bg-gray-50 dark:bg-gray-700/50 rounded-md"><span>{item.name}</span><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.name)}`} target="_blank" rel="noopener noreferrer" className="p-1 text-blue-500 hover:text-blue-700"><svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" /></svg></a></li>))}</ul></div>
+                                                        <div><h4 className="font-bold text-lg mb-3 text-indigo-700 dark:text-indigo-400">Nearby Pharmacies</h4><ul className="space-y-2">{tripData.emergencyInfo.pharmacies.map(item => (<li key={item.name} className="flex justify-between items-center p-2 bg-gray-50 dark:bg-gray-700/50 rounded-md"><span>{item.name}</span><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.name)}`} target="_blank" rel="noopener noreferrer" className="p-1 text-blue-500 hover:text-blue-700"><svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" /></svg></a></li>))}</ul></div>
+                                                     </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     )}
                                 </div>
+                                { knowMoreModal && (
+                                    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50" onClick={() => setKnowMoreModal(null)}>
+                                        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl p-8 max-w-lg w-full m-4" onClick={e => e.stopPropagation()}>
+                                            <h3 className="text-2xl font-bold mb-4">Location Details</h3>
+                                            <div className="space-y-3">
+                                                <p><strong>Crowd Level:</strong> <span className="font-normal">{knowMoreModal.c}</span></p>
+                                                <p><strong>Type:</strong> <span className="font-normal">{knowMoreModal.t}</span></p>
+                                                <p><strong>Distance from Main City:</strong> <span className="font-normal">{knowMoreModal.d}</span></p>
+                                                <p><strong>Amenities (Medical/Grocery):</strong> <span className={`font-semibold ${knowMoreModal.a ? 'text-green-600' : 'text-red-600'}`}>{knowMoreModal.a ? 'Readily Available' : 'Limited'}</span></p>
+                                                <p><strong>Safety:</strong> <span className={`font-semibold ${knowMoreModal.s ? 'text-green-600' : 'text-amber-600'}`}>{knowMoreModal.s ? 'Generally Safe' : 'Be Cautious'}</span></p>
+                                            </div>
+                                            <button onClick={() => setKnowMoreModal(null)} className="mt-6 w-full p-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-semibold transition-colors">Close</button>
+                                        </div>
+                                    </div>
+                                )}
                             </section>
                         )}
                     </main>
@@ -505,3 +768,4 @@
     </script>
 </body>
 </html>
+
